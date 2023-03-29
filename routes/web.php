@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('order', OrderController::class);
+Route::resource('covid19', Covid19Controller::class);
+Route::resource('product', ProductController::class);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
