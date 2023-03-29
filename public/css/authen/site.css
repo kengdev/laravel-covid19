@@ -1,0 +1,17 @@
+.authen-status{
+    padding-left:10px;
+    padding-top:10px;
+    font-size:13px;
+    font-style: italic;
+}
+span.authen-status{
+    font-size:13px;
+    color:red;
+    margin-left:10px;
+}
+
+span.session-status{
+    font-size:13px;
+    color:darkgreen;
+    margin-left:10px;
+}
