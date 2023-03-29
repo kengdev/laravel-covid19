@@ -49,7 +49,8 @@
                             <td>
                                 <select name="products[]" class="form-control">
                                     @foreach ($products as $product)
-                                        <option value="{{ $product->id }}">
+                                        <option value="{{ $product->id }}"
+                                            {{ $item->id == $product->id ? 'selected' : '' }}>
                                             {{ $product->name }}
                                             (฿{{ number_format($product->price, 2) }})
                                         </option>

@@ -23,8 +23,8 @@
             <!-- Column -->
             <div class="col-md-12 col-lg-12 col-xlg-12">
                 <div class="col-lg-12">
-                    <form method="POST" action="{{ url('/orders/'.$order->id) }}" enctype="multipart/form-data">
-                        @method('POST')
+                    <form method="POST" action="{{ url('/order/'.$order->id) }}" enctype="multipart/form-data">
+                        @method('PATCH')
                         @csrf
 
                         @include('order.form')
