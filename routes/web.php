@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Covid19Controller;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,4 @@ Route::get('/', function () {
 
 
 Route::resource('covid19', Covid19Controller::class);
+Route::resource('product', ProductController::class);

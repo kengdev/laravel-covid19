@@ -3,13 +3,13 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-                <h4 class="page-title">Covid19</h4>
+                <h4 class="page-title">Product</h4>
                 <div class="ms-auto text-end">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/covid19">รายการผู้ติดเชื้อโควิด19</a></li>
+                            <li class="breadcrumb-item"><a href="/product">รายการสินค้า</a></li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                เพิ่มรายการ
+                                เพิ่มรายการสินค้า
                             </li>
                         </ol>
                     </nav>
@@ -23,11 +23,11 @@
             <!-- Column -->
             <div class="col-md-12 col-lg-12 col-xlg-12">
                 <div class="col-lg-12">
-                    <form method="POST" action="{{ url('/covid19') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ url('/product') }}" enctype="multipart/form-data">
                         @method('POST')
                         @csrf
 
-                        @include('covid19.form')
+                        @include('product.form')
                     </form>
                 </div>
             </div>

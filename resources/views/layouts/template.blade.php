@@ -281,12 +281,12 @@
                     <ul id="sidebarnav" class="pt-4">
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/covid19"
-                                aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
+                                aria-expanded="false"><i class="fa fa-clinic-medical"></i><span
                                     class="hide-menu">Covid19</span></a>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/product"
-                                aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span
+                                aria-expanded="false"><i class="fa fa-store"></i><span
                                     class="hide-menu">Product</span></a>
                         </li>
                     </ul>

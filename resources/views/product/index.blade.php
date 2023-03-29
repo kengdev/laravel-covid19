@@ -7,6 +7,7 @@
         }
         td.action{
             text-align: center;
+            width:250px;
         }
     </style>
 @endsection
@@ -15,11 +16,11 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-                <h4 class="page-title">Covid19</h4>
+                <h4 class="page-title">Product</h4>
                 <div class="ms-auto text-end">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/covid19">รายการผู้ติดเชื้อโควิด19</a></li>
+                            <li class="breadcrumb-item"><a href="/product">รายการสินค้า</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -32,7 +33,7 @@
             <!-- Column -->
             <div class="col-md-12 col-lg-12 col-xlg-12">
                 <div class="col-lg-4">
-                    <form action="{{ url('/covid19') }}" method="GET" class="my-4">
+                    <form action="{{ url('/product') }}" method="GET" class="my-4">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" name="search" value="" />
                             <button class="btn btn-success" type="submit">Search</button>
@@ -41,37 +42,30 @@
                 </div>
 
                 <div class="col-lg-8 right">
-                    <a href="/covid19/create" class="btn btn-danger">เพิ่มข้อมูล</a>
+                    <a href="/product/create" class="btn btn-danger">เพิ่มข้อมูล</a>
                 </div>
 
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>Date</th>
-                            <th>Country</th>
-                            <th>Total</th>
-                            <th>Active</th>
-                            <th>Death</th>
-                            <th>Recovered</th>
+                            <th>Name</th>
+                            <th>Price</th>
                             <th></th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        @foreach ($covid19s as $item)
+                        @foreach ($products as $item)
                             <tr>
-                                <td>{{ $item->date }}</td>
-                                <td class="text-country">{{ $item->country }}</td>
-                                <td class="text-right">{{ number_format($item->total) }}</td>
-                                <td class="text-right">{{ number_format($item->active) }}</td>
-                                <td class="text-right">{{ number_format($item->death) }}</td>
-                                <td class="text-right">{{ number_format($item->recovered) }}</td>
+                                <td class="text-country">{{ $item->name }}</td>
+                                <td class="text-right">{{ number_format($item->price) }}</td>
+
                                 <td class="action">
-                                    <a href="{{ url('/covid19/' . $item->id) }}" class="btn btn-xs btn-info">Show</a>
-                                    <a href="{{ url('/covid19/' . $item->id . '/edit') }}" class="btn btn-xs btn-warning">Edit</a>
+                                    <a href="{{ url('/product/' . $item->id) }}" class="btn btn-xs btn-info">Show</a>
+                                    <a href="{{ url('/product/' . $item->id . '/edit') }}" class="btn btn-xs btn-warning">Edit</a>
 
                                     <form method="POST"
-                                        action="{{ url('/covid19' . '/' . $item->id) }}"
+                                        action="{{ url('/product' . '/' . $item->id) }}"
                                         style="display:inline">
                                         @method('DELETE')
                                         @csrf
@@ -85,7 +79,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                <div class="mt-4">{{ $covid19s->links() }}</div>
+                <div class="mt-4">{{ $products->links() }}</div>
             </div>
             <!-- Column -->
         </div>
