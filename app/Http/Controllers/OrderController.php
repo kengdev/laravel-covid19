@@ -71,7 +71,10 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $products = Product::all();
+        $order = Order::findOrFail($id);
+
+        return view('order/edit', compact('products', 'order'));
     }
 
     /**
@@ -83,7 +86,18 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $order->update($request->all());
+
+        $order->products()->detach();
+        $products = $request->input('products', []);
+        $quantities = $request->input('quantities', []);
+        for ($product = 0; $product < count($products); $product++) {
+            if ($products[$product] != '') {
+                $order->products()->attach($products[$product], ['quantity' => $quantities[$product]]);
+            }
+        }
+
+        return redirect('orders');
     }
 
     /**

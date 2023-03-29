@@ -76,9 +76,9 @@
                                     </ul>
                                 </td>
                                 <td class="action">
-                                    <a href="{{ url('/orders/' . $order->id) }}" class="btn btn-xs btn-primary">View</a>
-                                    <a href="{{ url('/orders/' . $order->id . '/edit') }}" class="btn btn-xs btn-warning">Edit</a>
-                                    <form method="POST" action="{{ url('/orders' . '/' . $order->id) }}" style="display:inline">
+                                    <a href="{{ url('/order/' . $order->id) }}" class="btn btn-xs btn-primary">View</a>
+                                    <a href="{{ url('/order/' . $order->id . '/edit') }}" class="btn btn-xs btn-warning">Edit</a>
+                                    <form method="POST" action="{{ url('/order' . '/' . $order->id) }}" style="display:inline">
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit" class="btn btn-xs btn-danger"
