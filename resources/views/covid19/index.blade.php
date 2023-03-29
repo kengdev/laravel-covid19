@@ -70,7 +70,9 @@
                                 <td class="text-right">{{ number_format($item->death) }}</td>
                                 <td class="text-right">{{ number_format($item->recovered) }}</td>
                                 <td class="action">
+                                    <a href="{{ url('/covid19/' . $item->id) }}" class="btn btn-xs btn-warning">Show</a>
                                     <a href="{{ url('/covid19/' . $item->id . '/edit') }}" class="btn btn-xs btn-warning">Edit</a>
+
                                     <form method="POST"
                                         action="{{ url('/covid19' . '/' . $item->id) }}"
                                         style="display:inline">
