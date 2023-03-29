@@ -35,3 +35,28 @@
         </div>
     </div>
 @endsection
+
+@section('js')
+    <script type="text/javascript">
+        (function($) {
+            $("#add_row").click(function(e) {
+                e.preventDefault();
+
+                var product_item = "<td>" + $('#product_body').find('td:first-child').next('td').html() +
+                    "</td>";
+                var quantity_item = "<td>" + $('#product_body').find('td:first-child').next('td').next()
+                .html() + "</td>";
+
+                var row =
+                    "<td class='action'><a href='#' onclick='removeRow(this)' class='btn btn-danger btn-circle btn-sm d-inline-flex align-items-center justify-content-center'><i class='fa fa-trash'></i></a></td>" +
+                    product_item + quantity_item;
+                $('#product_body').append('<tr>' + row + '</tr>');
+
+            });
+        }(jQuery));
+
+        function removeRow(item) {
+            $(item).closest('tr').remove();
+        }
+    </script>
+@endsection
