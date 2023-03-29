@@ -289,6 +289,12 @@
                                 aria-expanded="false"><i class="fa fa-store"></i><span
                                     class="hide-menu">Product</span></a>
                         </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/order"
+                                aria-expanded="false"><i class="fa fa-cart-shopping"></i><span
+                                    class="hide-menu">Order</span></a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

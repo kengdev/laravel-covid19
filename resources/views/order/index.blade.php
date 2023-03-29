@@ -42,31 +42,43 @@
                 </div>
 
                 <div class="col-lg-8 right">
-                    <a href="/product/create" class="btn btn-danger">เพิ่มข้อมูล</a>
+                    <a href="/order/create" class="btn btn-danger">เพิ่มข้อมูล</a>
                 </div>
 
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Price</th>
+                            <th>ID</th>
+                            <th>Customer Name</th>
+                            <th>E-mail</th>
+                            <th>Product</th>
                             <th></th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        @foreach ($products as $item)
-                            <tr>
-                                <td class="text-country">{{ $item->name }}</td>
-                                <td class="text-right">{{ number_format($item->price) }}</td>
-
+                        @foreach ($orders as $order)
+                            <tr data-entry-id="{{ $order->id }}">
+                                <td>
+                                    {{ $order->id ?? '' }}
+                                </td>
+                                <td>
+                                    {{ $order->customer_name ?? '' }}
+                                </td>
+                                <td>
+                                    {{ $order->customer_email ?? '' }}
+                                </td>
+                                <td>
+                                    <ul>
+                                        @foreach ($order->products as $item)
+                                            <li>{{ $item->name }} ({{ $item->pivot->quantity }} x ${{ $item->price }})</li>
+                                        @endforeach
+                                    </ul>
+                                </td>
                                 <td class="action">
-                                    <a href="{{ url('/product/' . $item->id) }}" class="btn btn-xs btn-info">Show</a>
-                                    <a href="{{ url('/product/' . $item->id . '/edit') }}" class="btn btn-xs btn-warning">Edit</a>
-
-                                    <form method="POST"
-                                        action="{{ url('/product' . '/' . $item->id) }}"
-                                        style="display:inline">
+                                    <a href="{{ url('/orders/' . $order->id) }}" class="btn btn-xs btn-primary">View</a>
+                                    <a href="{{ url('/orders/' . $order->id . '/edit') }}" class="btn btn-xs btn-warning">Edit</a>
+                                    <form method="POST" action="{{ url('/orders' . '/' . $order->id) }}" style="display:inline">
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit" class="btn btn-xs btn-danger"
@@ -75,11 +87,13 @@
                                         </button>
                                     </form>
                                 </td>
+
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
-                <div class="mt-4">{{ $products->links() }}</div>
+
+                <div class="mt-4">{{ $orders->appends(['search' => request('search')])->links() }}</div>
             </div>
             <!-- Column -->
         </div>

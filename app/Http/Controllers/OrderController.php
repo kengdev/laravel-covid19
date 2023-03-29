@@ -15,7 +15,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $perPage = 10;
+
+        $orders = Order::orderBy('created_at', 'desc')->paginate($perPage);
+        return view('order/index', compact('orders'));
     }
 
     /**
@@ -37,7 +40,16 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order = Order::create($request->all());
+        $products = $request->input('products', []);
+        $quantities = $request->input('quantities', []);
+        for ($product = 0; $product < count($products); $product++) {
+            if ($products[$product] != '') {
+                $order->products()->attach($products[$product],
+                    ['quantity' => $quantities[$product]]);
+            }
+        }
+        return redirect('order');
     }
 
     /**
