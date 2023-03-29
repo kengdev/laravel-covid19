@@ -11,7 +11,7 @@
     <link href="{{ asset('assets/libs/flot/css/float-chart.css') }}" rel="stylesheet" />
     <link href="{{ asset('src/fontawesome/css/all.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('dist/css/style.min.css') }}" rel="stylesheet" />
-    @yield("css")
+    @yield('css')
 </head>
 
 <body>
@@ -256,8 +256,15 @@
                                         class="mdi mdi-settings me-1 ms-1"></i> Account
                                     Setting</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i
-                                        class="fa fa-power-off me-1 ms-1"></i> Logout</a>
+
+                                <form method="POST" action="{{ url('/logout') }}" style="display:inline">
+                                    @method('POST')
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">
+                                        <i class="fa fa-power-off me-1 ms-1"></i> Logout
+                                    </button>
+                                </form>
+
                                 <div class="dropdown-divider"></div>
                                 <div class="ps-4 p-10">
                                     <a href="javascript:void(0)"
@@ -303,7 +310,7 @@
         </aside>
 
         <div class="page-wrapper">
-            @yield("content")
+            @yield('content')
         </div>
         <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>
         <!-- Bootstrap tether Core JavaScript -->
@@ -327,7 +334,7 @@
         <script src="{{ asset('assets/libs/flot/jquery.flot.crosshair.js') }}"></script>
         <script src="{{ asset('assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js') }}"></script>
         <script src="{{ asset('dist/js/pages/chart/chart-page-init.js') }}"></script>
-        @yield("js")
+        @yield('js')
 </body>
 
 </html>
