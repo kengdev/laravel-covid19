@@ -60,7 +60,10 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $products = Product::all();
+        $order = Order::findOrFail($id);
+
+        return view('order/show', compact('products', 'order'));
     }
 
     /**
@@ -106,8 +109,9 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        return redirect('orders');
     }
 }

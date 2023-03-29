@@ -11,7 +11,7 @@
             <div class="col-md-6">
                 <div class="mb-3">
                     <label>E-mail</label>
-                    <input type="text" class="form-control" name="customer_mail"
+                    <input type="text" class="form-control" name="customer_email"
                         value="{{ isset($order->customer_email) ? $order->customer_email : '' }}" />
                 </div>
             </div>
